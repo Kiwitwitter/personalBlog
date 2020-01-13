@@ -1,5 +1,5 @@
 ---
-title: AWS Cloud Practitioner, Core Serviceds
+title: AWS Cloud Practitioner, Core Services
 date: 2020-01-02 22:45:06
 tags:
 - study
