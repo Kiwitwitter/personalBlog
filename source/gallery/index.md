@@ -7,8 +7,8 @@ albums: [
 ["https://raw.githubusercontent.com/Kiwitwitter/hexo-storage/master/img/IMG_1209.JPG","San Jose Fair"],
 ["https://raw.githubusercontent.com/Kiwitwitter/hexo-storage/master/img/IMG_1010.JPG","Wine Tasting"],
 ["https://raw.githubusercontent.com/Kiwitwitter/hexo-storage/master/img/IMG_1202.JPG","Nappa Street Night"],
-["https://raw.githubusercontent.com/Kiwitwitter/hexo-storage/master/img/IMG_1212.JPG","2020 New Year"]
+["https://raw.githubusercontent.com/Kiwitwitter/hexo-storage/master/img/IMG_1212.JPG","2020 New Year"],
+["https://raw.githubusercontent.com/Kiwitwitter/hexo-storage/master/img/IMG_1497.JPG","SF Sunset"]
         ]
 ---
 
-{% meting "406346452" "netease" "song" %}
