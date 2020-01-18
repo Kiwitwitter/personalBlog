@@ -49,6 +49,8 @@ tags:
 
   ![](https://raw.githubusercontent.com/Kiwitwitter/hexo-storage/master/img/Screen%20Shot%202020-01-13%20at%2010.34.40%20PM.jpg)
 
+
+
 ## Auto Scaling
 
 ### Service Introduction
@@ -78,7 +80,7 @@ We need to keep Scalibity as well as Automation.
     * VPC and Subnet(s)
     * Load Balancer
     * Minimum instances
-    * Maximum insatnces
+    * Maximum instances
     * Desired capacity
   * Auto Scaling Policy
     * Scheduled
@@ -104,4 +106,129 @@ We need to keep Scalibity as well as Automation.
 
   The user asks to translate a name into an IP address \<A> and Route 53 does the translation.
 
-(To be continued...)
+
+
+## Amazon Relational Database Services (RDS)
+
+### Challenges of Relational Database
+
+* Server Mantenance and energy footprint
+* Software install and patches
+* database backups and high availability
+* Limits on scalability
+* Data security
+* OS install and patches
+
+### Service Introduction
+
+Amazon RDS is a managed service that sets up and operates a relational database in the cloud, Amazon RDS provides a cost-efficient and resizable capacity while automating time-consuming administrative tasks. 
+
+Amazon RDS gives the performance, high availability, security, and compatibility to users.
+
+![](https://raw.githubusercontent.com/Kiwitwitter/hexo-storage/master/img/Screen%20Shot%202020-01-18%20at%201.00.17%20AM.jpg)
+
+Amazon RDS manages:
+
+* OS Installation and patches
+* Database software install and patches
+* Database backups
+* High Availability
+* Scaling
+* Power and rack & stack
+* Server maintenance
+
+### Overview and Use Cases
+
+The basic building block if Amazon RFS is the database instance. A database instance is an isolated environment that can contain multiple user-created databases and can be accessed by using the same tools and applications that you use with a standalone database instance.
+
+The resources found in a database instance are determined by its database instance class, the type of storage, is dictated by the type of disks.
+
+DB Instance class includes:
+
+* CPU
+* Memory
+* Network performance
+
+DB Instance Storage Includes:
+
+* Magnetic
+* General purpose (SSD)
+* Provisioned IOPS
+
+Amazon RDS currently supports 6 databases:
+
+* MySQL
+* Amazon Aurora
+* Microsoft Sequel Server
+* PostgreSQL
+* MariaDB
+* Oracle
+
+You can run an instance using Amazon VPC and have control of the virtual networking environment.
+
+![](https://raw.githubusercontent.com/Kiwitwitter/hexo-storage/master/img/Screen%20Shot%202020-01-18%20at%201.51.13%20AM.jpg)
+
+User can select own IP address range, create subnets, and configure routing and access control lists.  
+
+The basic functionality of Amazon RDS is the same whether or not it is in the VPC. But usually the database insatcne is isolated in an VPC and is only made directly accessible to indicated application instances.
+
+One of the most powerful features of Amazon RDS is the ability to configure the database instance for high availability with a multi-agency deployment. Once configured, RDS automatically generates a standby copy of the database instance in another Availability Zone within the same VPC. After seeding the database copy, transactions are synchronously replicated to the standby copy. 
+
+![](https://raw.githubusercontent.com/Kiwitwitter/hexo-storage/master/img/Screen%20Shot%202020-01-18%20at%202.00.45%20AM.jpg)
+
+Having multi-AZ RDS database can provide high availability as well as protection against database instance failure. If one master instance failed, the RDS can bring the replication online as the new master instance. And there should be no data loss due to the synchronous replication. Because applications reference the database by name using RDS DNS endpoint, user don't need to change anything in the application code to use the standby copy.
+
+RDS also supports the creation of read replicas for MySQL, MariaDB, PostgreSQL and Amazon Aurora. Updates made to the source database instances are asynchronously copied to the read replica instance. User can reduce the read load on source by routing read queries to read replicas, and can also scale out beyond the capacity constraints of a single database instance for read-heavy database workloads. Read replica can also be promoted to become the master database instance, but due to asynchronous replication, this requires manual action.
+
+
+
+Read replicas can be created in a different region than the master database, which help satisfy disaster recovery requirements or cutting down latency by redirecting read queries to to a read replica. 
+
+Use cases:
+
+* RDS is ideal for Web and mobile applications that need a database with high throughput, massive storage scalability and high availability. 
+
+* RDS doesn't have any licensing constraints, it perfectly fits the variable usage pattern of these applications. RDS also provides a flexible, secured, and low-cost database solution for online sales and retailing. 
+* RDS manages the database infrastructure, so mobile and online game developers don't have to worry about provisioning, scaling, or monitoring database servers. 
+
+### Benefits
+
+* Highly scalable
+* HIgh Performance
+* Easy to administer
+* Available and durable
+* Secure and compliant
+
+## AWS Lambda
+
+### Overview
+
+* Fully-Managed serverless compute
+* Event-driven execution
+* Sub-second meeting
+* Multiple languages supported
+
+AWS Lambda is compute service that lets users run code with provisioning or managing services. AWS Lambda executes code only when needed and scales automatically to thousands of requests per second. 
+
+### Use Cases
+
+
+
+## AWS Elastic Beanstalk
+
+
+
+## Amazon Simple Notification Service
+
+
+
+## Amazon CloudWatch
+
+
+
+## Amazon CloudFront
+
+
+
+## AWS CloudFormation
+
