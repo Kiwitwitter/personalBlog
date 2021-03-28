@@ -92,3 +92,46 @@ An EBS (Elastic Block Store) Volume is a network drive that you can attach to yo
 
 ## Elastic File System
 
+* Managed NFS (Network File System) that can be mounted on many EC2s, which means all EC2 attached to it have access to it
+* EFS works with EC2 instances in multi-AZs
+* High available, scalable, expensive (3 * gp2), pay per use
+* Use cases: content management, web serving, data sharing, Wordpress
+* Use NFSv4.I protocol
+* Use security groupn to control access to EFS
+* **Compatible with Linux based AMI only**
+* Encryption at rest using KMS
+* POSIX file system (~Linux) that has a standard file API
+* File system scales automatically, pay per use, no capacity planning
+
+## EFS - Performance and Storage Classes
+
+* EFS Scale:
+  * 1000s of concurrent NFS clients, 10 GB+/s throughtput
+  * Grow to Petabyte-scale NFS, automatically
+* Performance Mode (Set at EFS creation time):
+  * General purpose(default): latency-sensitive use cases(web server, CMS, etc..)
+  * Max I/O - higher latency, throughtput, highly parallel
+* Stoage Tiers (lifecycle management feature – move file after N days):
+  * Standard: for frequently accessed files
+  * Infrequent access (EFS-IA): cost to retrieve files, lower price to store
+
+## EBS vs EFS
+
+| EBS                                                          | EFS                                                   |
+| ------------------------------------------------------------ | ----------------------------------------------------- |
+| can be attached to only one instance at a time<br />are locked at the Availability Zone (AZ) level | Mounting 100s of instances across AZ                  |
+| gp2: IO increases if the disk size increases<br />io1: can increase IO independently | 1000s of concurrent NFS clients, 10 GB+/s throughtput |
+
+### EBS:
+
+* To migrate an EBS volume across AZ
+  1. Take a snapshot
+  2. Restore the snapshot to another AZ
+  3. EBS backups use IO and you shouldn’t run them while your application is handling a lot of traffic
+* Root EBS Volumes of instances get terminated by default if the EC2 instance gets terminated. (you can disable that)
+
+### EFS:
+
+* Only for Linux Instances (POSIX)
+* EFS has a higher price point than EBS
+* Can leverage EFS-IA for cost savings
